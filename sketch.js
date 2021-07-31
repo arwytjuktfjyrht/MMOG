@@ -127,7 +127,6 @@ console.log(frameCount/1000)
     player.depth+=1;
     fire.lifetime=2000;
     fireGroup.add(fire)
-  }
   } else if(gameState=1){
     //console.log("oof");
     if(keyDown("r")){
@@ -139,7 +138,7 @@ console.log(frameCount/1000)
       player.x=width/2;
       fireGroup.destroyEach();
       LA=100
-      text("Press "R" to restart",width/2,height/2)
+      text("Press R to restart",width/2,height/2)
     }
   }
   player.velocityY=player.velocityY+0.8;
@@ -168,5 +167,4 @@ console.log(frameCount/1000)
   //  frameCount=frameCount+1800;
   //}
   drawSprites();
-}
-
+}}
