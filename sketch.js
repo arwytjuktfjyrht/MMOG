@@ -34,7 +34,7 @@ function setup() {
 }
 
 function draw() {
-  background(200,200,200);  
+  
   if(gameState===0){
 
   dif=10000/frameCount;
@@ -97,10 +97,10 @@ function draw() {
   //text("Health: "+healthFI+"%",600,40);
   healthBar.width=healthFI;
   text("High Score: "+Math.round(highScore),550,20);
-  laser.isTouching(player)
+  
   
   if(laser.isTouching(player)&&laser.width>1){
-    health=health+=frameCount/1000;
+    health=health+frameCount/1000;
     healthFI=100-health;
     //console.log("health"+health);
   }
@@ -108,7 +108,7 @@ function draw() {
 console.log(frameCount/1000)
 
   if(fireGroup.isTouching(player)){
-    health=health+=frameCount/1000;
+    health=health+frameCount/1000;
     healthFI=100-health;
     //console.log("health"+health);
   }
@@ -141,11 +141,13 @@ console.log(frameCount/1000)
       text("Press R to restart",width/2,height/2)
     }
   }
-  player.velocityY=player.velocityY+0.8;
+  
 
   if(player.isTouching(ground)){
     player.velocityY=0;
-    player.y=ground.y-45.2;
+    player.y=ground.y-46;
+  }else{
+    player.velocityY=player.velocityY+0.8;
   }
 
   //console.log(frameCount);
@@ -166,5 +168,7 @@ console.log(frameCount/1000)
   //  AFC=AFC+1800;
   //  frameCount=frameCount+1800;
   //}
+}
+  background(200,200,200);  
   drawSprites();
-}}
+}
