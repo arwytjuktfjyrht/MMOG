@@ -102,15 +102,15 @@ function draw() {
   if(laser.isTouching(player)&&laser.width>1){
     health=health+frameCount/1000;
     healthFI=100-health;
-    //console.log("health"+health);
+    console.log("health "+Math.round(health));
   }
 
-console.log(frameCount/1000)
+
 
   if(fireGroup.isTouching(player)){
     health=health+frameCount/1000;
     healthFI=100-health;
-    //console.log("health"+health);
+    console.log("health "+Math.round(health));
   }
   if(health>=100){
     //player.destroy();
@@ -127,8 +127,9 @@ console.log(frameCount/1000)
     player.depth+=1;
     fire.lifetime=2000;
     fireGroup.add(fire)
-  } else if(gameState=1){
-    //console.log("oof");
+  } else if(gameState===1){
+    console.log("oof");
+    player.velocityY=0;
     if(keyDown("r")){
       gameState=0;
       health=1;
@@ -138,19 +139,9 @@ console.log(frameCount/1000)
       player.x=width/2;
       fireGroup.destroyEach();
       LA=100
-      text("Press R to restart",width/2,height/2)
+      text("Press R to restart",width/2,height/2);
     }
   }
-  
-
-  if(player.isTouching(ground)){
-    player.velocityY=0;
-    player.y=ground.y-46;
-  }else{
-    player.velocityY=player.velocityY+0.8;
-  }
-
-  //console.log(frameCount);
 
   if(lw>1){
     lw=lw-1;
@@ -169,6 +160,12 @@ console.log(frameCount/1000)
   //  frameCount=frameCount+1800;
   //}
 }
-  background(200,200,200);  
+if(player.isTouching(ground)){
+  player.velocityY=0;
+  player.y=ground.y-46;
+}else{
+  player.velocityY=player.velocityY+0.8;
+}
+  background(200,200,200);
   drawSprites();
 }
