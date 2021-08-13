@@ -93,10 +93,7 @@ function draw() {
     player.x=RW.x+15;
   }
 
-  text("Score: "+Math.round(score),550,60);
-  //text("Health: "+healthFI+"%",600,40);
-  healthBar.width=healthFI;
-  text("High Score: "+Math.round(highScore),550,20);
+  
   
   
   if(laser.isTouching(player)&&laser.width>1){
@@ -130,6 +127,7 @@ function draw() {
   } else if(gameState===1){
     console.log("oof");
     player.velocityY=0;
+    text("Press R to restart",width/2,height/2);
     if(keyDown("r")){
       gameState=0;
       health=1;
@@ -139,7 +137,7 @@ function draw() {
       player.x=width/2;
       fireGroup.destroyEach();
       LA=100
-      text("Press R to restart",width/2,height/2);
+      
     }
   }
 
@@ -168,4 +166,9 @@ if(player.isTouching(ground)){
 }
   background(200,200,200);
   drawSprites();
+
+  text("Score: "+Math.round(score),550,60);
+  //text("Health: "+healthFI+"%",600,40);
+  healthBar.width=healthFI;
+  text("High Score: "+Math.round(highScore),550,20);
 }
